@@ -1,7 +1,5 @@
-# final-project-submission-mmende29
-final-project-submission-mmende29 created by GitHub Classroom
+# 5G-NR Signal SNR Classification using Deep Learning⁠.
 
-# 5G-NR Signal SNR Classification Project
 
 ## Overview
 This project implements a deep learning solution for classifying 5G-NR signals based on their SNR levels. It processes raw RF signals and uses a CNN to determine signal quality.
