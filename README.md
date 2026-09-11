@@ -1,26 +1,43 @@
-# 5G-NR Signal SNR Classification using Deep Learning⁠.
+# 5G-NR Signal SNR Classification Using Deep Learning
 
+A PyTorch deep learning pipeline designed to classify Signal-to-Noise Ratio (SNR) levels from 2-channel In-Phase and Quadrature (I/Q) 5G-NR RF signal sequences. 
 
 ## Overview
-This project implements a deep learning solution for classifying 5G-NR signals based on their SNR levels. It processes raw RF signals and uses a CNN to determine signal quality.
 
+Signal-to-Noise Ratio (SNR) estimation is a critical component of modern wireless communications, link adaptation, and spectrum monitoring. This project processes raw RF binary data, extracts complex I/Q streams, normalizes signal parameters, injects Additive White Gaussian Noise (AWGN) to emulate varying real-world SNR environments, and classifies the signal conditions using a custom 1D Convolutional Neural Network (CNN).
 
-## Signal Specifications
-- Signal Type: 5G-NR (New Radio)
-- Center Frequency: 628 MHz
-- Sampling Rate: 20 MHz
-- Bit Depth: 16-bit
-- Input Impedance: 50 ohm
+This repository demonstrates the intersection of **Radio Frequency (RF) principles, digital signal processing, and machine learning**.
 
-## Dataset Details
-Source: IEEE Dataport 5G-NR signal collection
-File Format: Binary I/Q samples (interleaved 16-bit integers)
-Sample Length: 2000 samples per segment
-Total Samples: 10,000 segments
-Data also found here: https://www.kaggle.com/datasets/siddss/real-world-wireless-communication-dataset?resource=download&select=reading_signaldata.py
+## Pipeline Architecture
 
-## SNR Classification Levels
-The model classifies signals into three SNR categories:
-- High SNR: 20 dB
-- Medium SNR: 10 dB
-- Low SNR: 0 dB
+1. **RF Processing & Parsing:** Extracts 16-bit binary I/Q channels captured at a 20 MHz sampling rate ($628\text{ MHz}$ center frequency).
+2. **Phase-Preserving Normalization:** Scales I/Q signals by peak magnitude while rigorously preserving the original phase relationship.
+3. **Noise Synthesis:** Computes base SNR and applies targeted Gaussian noise scaling across 10,000 sequence samples ($2000$ sequence length per channel).
+4. **1D CNN Classification:** Evaluates dynamic temporal feature maps through stacked `Conv1D`, `MaxPool1d`, and `Dropout` layers, utilizing `skorch` for the training loop.
+
+## Dataset Parameters
+
+* **Source Data:** IEEE Dataport 5G-NR RF Dataset
+* **Sampling Rate:** 20 MS/s
+* **Bit Depth:** 16-bit integer
+* **Input Dimension:** (10000, 2, 2000) -> [Batch Size, Channels, Sequence Length]
+* **Target Classes:** High (20 dB), Medium (10 dB), Low (0 dB)
+
+## Repository Structure
+
+* `/data/`: Contains the raw IEEE Dataport RF data (ignored via `.gitignore` for size).
+* `/src/`: Contains the modular PyTorch CNN architecture and signal processing utility functions.
+* `/notebooks/`: Contains the primary execution pipeline.
+
+## Development Environment
+
+This project was developed and evaluated using **Spyder IDE** with its notebook environment integration. 
+
+### Quickstart
+
+Clone the repository and install the required dependencies:
+
+```bash
+git clone [https://github.com/your-username/5G-NR-Signal-SNR-Classification.git](https://github.com/your-username/5G-NR-Signal-SNR-Classification.git)
+cd 5G-NR-Signal-SNR-Classification
+pip install -r requirements.txt
