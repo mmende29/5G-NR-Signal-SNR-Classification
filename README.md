@@ -41,3 +41,5 @@ Clone the repository and install the required dependencies:
 git clone https://github.com/mmende29/5G-NR-Signal-SNR-Classification.git
 cd 5G-NR-Signal-SNR-Classification
 pip install -r requirements.txt
+
+To run the pipeline, open notebooks/5g_snr_classification_pipeline.ipynb within Spyder or your preferred IDE, ensure the data paths point correctly to the /data/ directory, and execute the cells sequentially.
