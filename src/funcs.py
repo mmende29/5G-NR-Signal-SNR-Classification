@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Edited from class example
 
-Marvin
-"""
 import torch.nn as nn
 import torch.nn.functional as F
 
