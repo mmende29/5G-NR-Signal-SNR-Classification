@@ -38,6 +38,6 @@ This project was developed and evaluated using **Spyder IDE** with its notebook 
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone [https://github.com/your-username/5G-NR-Signal-SNR-Classification.git](https://github.com/your-username/5G-NR-Signal-SNR-Classification.git)
+git clone https://github.com/mmende29/5G-NR-Signal-SNR-Classification.git
 cd 5G-NR-Signal-SNR-Classification
 pip install -r requirements.txt
